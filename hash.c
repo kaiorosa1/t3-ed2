@@ -1,5 +1,6 @@
 #include "hash.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 typedef struct {
     Key encrypt;
@@ -15,7 +16,7 @@ struct celula{
 
 // Tabela de celulas, variavel global
 Celula** tab;
-long long int tabTam = 1;
+long long int tabTam;
 
 long long int hash(Key obj){
     return returnKeyValue(obj)%tabTam;
@@ -25,6 +26,7 @@ long long int hash(Key obj){
 // pelo parâmetro.
 void iniciarHash() 
 { 
+    tabTam = 1;
     for(int i = 0; i < C-1; i++){
         tabTam = tabTam * R;
     } 
