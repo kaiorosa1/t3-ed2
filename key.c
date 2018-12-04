@@ -119,3 +119,11 @@ void cracking(Key k, Key T[N]) {
         sum = add(sum, const1);
    }
 }
+
+//Retorna o valor único da Key
+long long int returnKeyValue(Key a){
+    long long int valor;
+    for(int i = C-1; i >= 0; i--){
+        valor = (valor*R)+a.digit[i];
+    }return valor;
+}

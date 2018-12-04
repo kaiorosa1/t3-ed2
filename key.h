@@ -41,4 +41,10 @@ Key sub(Key a, Key b);
 // Verifica cada combinação da tabela para encontrar a senha
 void cracking(Key k, Key T[N]);
 
+//Retorna o valor único da Key
+long long int returnKeyValue(Key a);
+
+// Retorna 1 para a sendo igual a b e 0 se forem diferentes.
+int compare(Key a, Key b);
+
 #endif

@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "key.h"
+#include "hash.h"
 
 int main(int argc, char *argv[]) {
     Key encrypted;                 // A senha criptografada.
@@ -15,11 +15,18 @@ int main(int argc, char *argv[]) {
 
     // Lê a tabela T.
     unsigned char buffer[C+1];     // Buffer temporário.
+    void iniciarHash();
     for (int i = 0; i < N; i++) {
         scanf("%s", buffer);
         T[i] = init_key(buffer);
     }
-    cracking(encrypted, T);
-
+    for (int i = 0; i < N; i++) {
+        insereHash(T[i], T);
+    }
+    
+    procuraHash(encrypted);
+    
+    destroiHash();
+    
     return 0;
 }
