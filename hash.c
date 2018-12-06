@@ -53,11 +53,18 @@ void insereHash(Key obj, Key T[N])
 // e imprime cada uma delas
 void procuraHash(Key obj) 
 { 
+    //HERE NEEDS SOME Tweaks
     Celula* t;
     long long int h;
     h = hash(obj);
-    for (t = tab[h]; t != NULL; t = t->next) 
-      if (compare(t->obj.encrypt ,obj)) print_key_char(t->obj.decrypt);
+    //printf("%lld\n",h);
+    for (t = tab[h]; t != NULL; t = t->next){
+        if (compare(t->obj.encrypt ,obj)){
+             print_key_char(t->obj.decrypt);
+        }
+        printf("Nunca chega\n");
+    }
+      
 }
 
 // Destroi a memoria alocada da hash

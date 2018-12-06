@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
     Key T[N];                      // A tabela T.
 
     if (argc != 2) {
-        fprintf(stderr, "Usage: ./encrypt [encrypted] < [table.txt]\n");
+        fprintf(stderr, "Usage: ./brute [encrypted] < [table.txt]\n");
         exit(EXIT_FAILURE);
     }
 
