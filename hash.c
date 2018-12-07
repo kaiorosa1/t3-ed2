@@ -83,7 +83,7 @@ void crackingDecrypt(Key k, Key T[N]) {
         
         //print_key_char(sum);        
         if(compare(pass, k)){
-            insereHash(pass,T);
+            insereHash(sum,T);
             //print_key_char(sum);
         }
         sum = add(sum, const1); // anda para a proxima chave 
