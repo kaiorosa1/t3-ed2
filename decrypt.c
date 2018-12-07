@@ -16,19 +16,21 @@ int main(int argc, char *argv[]) {
     // Lê a tabela T.
     unsigned char buffer[C+1];     // Buffer temporário.
     iniciarHash();
+    
     printf("iniciou hash\n");
     for (int i = 0; i < N; i++) {
         scanf("%s", buffer);
         T[i] = init_key(buffer);
     }
     printf("iniciou tabela\n");
-    for (int i = 0; i < N; i++) {
-        insereHash(T[i], T);
-    }
-    printf("inseriu na hash\n");
+    //for (int i = 0; i < N; i++) {
+    crackingDecrypt(encrypted,T);
+        //insereHash(T[i], T);
+    //}
+    //printf("inseriu na hash\n");
     procuraHash(encrypted);
     
-    destroiHash();
+    //destroiHash();
     
     return 0;
 }

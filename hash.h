@@ -17,6 +17,8 @@ void insereHash(Key obj, Key T[N]);
 // Procura a lista de Key que possuem a mesma chave de obj
 // e imprime cada uma delas
 void procuraHash(Key obj);
+//teste
+void crackingDecrypt(Key k, Key T[N]);
 
 // Destroi a memoria alocada da hash
 void destroiHash();

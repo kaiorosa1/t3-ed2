@@ -108,7 +108,7 @@ void cracking(Key k, Key T[N]) {
     Key sum = {{0}};
     long long int limite = 1;
     for(int i = 0; i < C; i++){
-        limite = limite * R;
+        limite = limite * R; //here
     }
     for(long long j = 0; j < limite; j++){
         Key pass = subset_sum(sum, T);
@@ -119,6 +119,7 @@ void cracking(Key k, Key T[N]) {
         sum = add(sum, const1);
    }
 }
+
 
 //Retorna o valor único da Key
 long long int returnKeyValue(Key a){

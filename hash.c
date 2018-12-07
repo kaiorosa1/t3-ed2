@@ -1,6 +1,7 @@
 #include "hash.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 
 typedef struct {
     Key encrypt;
@@ -26,13 +27,12 @@ long long int hash(Key obj){
 // pelo parâmetro.
 void iniciarHash() 
 { 
-    tabTam = 1;
-    for(int i = 0; i < C-1; i++){
-        tabTam = tabTam * R;
-    } 
+    tabTam = 199; //numero primo para numero de buckets - no caso o maximo de possibilidades de senha
+    //tabTam = pow(R,C);
     tab = (Celula**) malloc(tabTam * sizeof (Celula*));
     for (int h = 0; h < tabTam; h++) 
         tab[h] = NULL;
+
 }
 
 // Insere o Item na tabela.
@@ -53,18 +53,42 @@ void insereHash(Key obj, Key T[N])
 // e imprime cada uma delas
 void procuraHash(Key obj) 
 { 
-    //HERE NEEDS SOME Tweaks
     Celula* t;
     long long int h;
     h = hash(obj);
-    //printf("%lld\n",h);
+  
     for (t = tab[h]; t != NULL; t = t->next){
         if (compare(t->obj.encrypt ,obj)){
              print_key_char(t->obj.decrypt);
         }
-        printf("Nunca chega\n");
+        
     }
       
+}
+
+void crackingDecrypt(Key k, Key T[N]) {
+    Key const1;
+    for(int i = 0; i < C-1; i++){
+        const1.digit[i] = 0;
+    }const1.digit[C-1] = 1;
+    Key sum = {{0}};
+    long long int limite = 1;
+    limite = pow(R,C);
+    //for(int i = 0; i < C; i++){
+    //    limite = limite * R; //here
+    //}
+    for(long long j = 0; j < limite; j++){
+        Key pass = subset_sum(sum, T);
+        //print_key_char(pass);
+        
+        //print_key_char(sum);        
+        if(compare(pass, k)){
+            insereHash(pass,T);
+            //print_key_char(sum);
+        }
+        sum = add(sum, const1); // anda para a proxima chave 
+   }
+   printf("Finsihed!!!\n");
 }
 
 // Destroi a memoria alocada da hash
