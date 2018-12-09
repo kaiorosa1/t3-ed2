@@ -67,25 +67,26 @@ void procuraHash(Key obj)
 }
 
 void crackingDecrypt(Key k, Key T[N]) {
-    Key const1;
+    Key const1; // uma chave criada para gerar as combinacoes
     for(int i = 0; i < C-1; i++){
         const1.digit[i] = 0;
-    }const1.digit[C-1] = 1;
+    }
+    const1.digit[C-1] = 1;
+    
     Key sum = {{0}};
     long long int limite = 1;
     limite = pow(R,C);
-    //for(int i = 0; i < C; i++){
-    //    limite = limite * R; //here
-    //}
+    
+    //todos  os subsets e comparacao com a chave recebida como parametro
     for(long long j = 0; j < limite; j++){
         Key pass = subset_sum(sum, T);
-        //print_key_char(pass);
-        
-        //print_key_char(sum);        
-        if(compare(pass, k)){
+    
+        if(compare(pass,k)){
             insereHash(sum,T);
-            //print_key_char(sum);
         }
+        
+      
+        
         sum = add(sum, const1); // anda para a proxima chave 
    }
    printf("Finsihed!!!\n");
@@ -93,5 +94,8 @@ void crackingDecrypt(Key k, Key T[N]) {
 
 // Destroi a memoria alocada da hash
 void destroiHash(){
+    
+    for (int h = 0; h < tabTam; h++) 
+        free(tab[h]);
     free(tab);
 }

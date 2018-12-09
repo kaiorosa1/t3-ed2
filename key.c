@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "key.h"
-
+#include <math.h>
 // Inicializa e retorna uma chave a partir do vetor de char dado.
 // Exemplo: s = "abcdwxyz"  =>  k = 0 1 2 3 22 23 24 25
 Key init_key(unsigned char s[]) {
@@ -99,26 +99,7 @@ Key sub(Key a, Key b) {
 }
 
 
-// Verifica cada combinação da tabela (R^C) para encontrar a senha
-void cracking(Key k, Key T[N]) {
-    Key const1;
-    for(int i = 0; i < C-1; i++){
-        const1.digit[i] = 0;
-    }const1.digit[C-1] = 1;
-    Key sum = {{0}};
-    long long int limite = 1;
-    for(int i = 0; i < C; i++){
-        limite = limite * R; //here
-    }
-    for(long long j = 0; j < limite; j++){
-        Key pass = subset_sum(sum, T);
-        //print_key_char(pass);
-        //print_key_char(sum);        
-        if(compare(pass, k))
-            print_key_char(sum);
-        sum = add(sum, const1);
-   }
-}
+
 
 
 //Retorna o valor único da Key

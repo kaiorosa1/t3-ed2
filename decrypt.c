@@ -23,14 +23,13 @@ int main(int argc, char *argv[]) {
         T[i] = init_key(buffer);
     }
     printf("iniciou tabela\n");
-    //for (int i = 0; i < N; i++) {
+    //crias os subsets e insere na tabela hash
     crackingDecrypt(encrypted,T);
-        //insereHash(T[i], T);
-    //}
-    //printf("inseriu na hash\n");
+    
+    //procura senha encriptografada na tabela hash e imprime caso aja um match
     procuraHash(encrypted);
     
-    //destroiHash();
+    destroiHash();
     
     return 0;
 }
